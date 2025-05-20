@@ -1,4 +1,6 @@
-﻿using EmployeesApp.Web.Models;
+﻿// Ignore Spelling: App
+
+using EmployeesApp.Web.Models;
 using EmployeesApp.Web.Services;
 using EmployeesApp.Web.Views.Employees;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +9,7 @@ namespace EmployeesApp.Web.Controllers
 {
     public class EmployeesController : Controller
     {
-        static EmployeeService service = new EmployeeService();
+        static readonly EmployeeService service = new();
 
         [HttpGet("")]
         public IActionResult Index() {
@@ -36,7 +38,7 @@ namespace EmployeesApp.Web.Controllers
             if(!ModelState.IsValid || createVM.BotCheck != 4)
                 return View();
 
-            Employee employee = new Employee {
+            Employee employee = new() {
                 Name = createVM.Name,
                 Email = createVM.Email
             };
