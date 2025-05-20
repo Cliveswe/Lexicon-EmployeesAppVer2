@@ -20,8 +20,9 @@ namespace EmployeesApp.Web.Controllers
                 {
                     Name = o.Name,
                     Id = o.Id,
-                    Email = o.Email
-                    
+                    Email = o.Email,
+                    ShowAsHighlighted = service.ShowAsHighLighted(o.Email)
+
                 })
                 .ToArray()
             };

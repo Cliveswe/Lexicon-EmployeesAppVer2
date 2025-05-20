@@ -1,4 +1,6 @@
 ﻿using EmployeesApp.Web.Models;
+using Microsoft.Extensions.FileSystemGlobbing.Internal;
+using System.Text.RegularExpressions;
 
 namespace EmployeesApp.Web.Services
 {
@@ -28,7 +30,7 @@ namespace EmployeesApp.Web.Services
             {
                 Id = 52,
                 Name = "Scott Hanselman",
-                Email = "s.h@outlook.com",
+                Email = "admins.h@outlook.com",
             },
             new Employee()
             {
@@ -50,5 +52,20 @@ namespace EmployeesApp.Web.Services
 
         public Employee GetById(int id) => employees
             .Single(e => e.Id == id);
+
+        internal bool ShowAsHighLighted(string email)
+        {
+            string pattern = @"admin";
+            Match match = Regex.Match(email, pattern);
+            if (match.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
     }
 }
