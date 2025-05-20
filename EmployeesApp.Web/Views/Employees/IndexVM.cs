@@ -18,7 +18,7 @@ namespace EmployeesApp.Web.Views.Employees
             [EmailAddress(ErrorMessage = "Invalid e-mail address")]
             [Required(ErrorMessage = "You must specify an e-mail address")]
             public required string Email { get; set; }
-            public required bool ShowAsHighlighted { get; set; }
+            public bool ShowAsHighlighted { get; set; }
         }
         
     }
