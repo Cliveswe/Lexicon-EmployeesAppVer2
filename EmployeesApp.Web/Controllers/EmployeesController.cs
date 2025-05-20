@@ -36,11 +36,16 @@ namespace EmployeesApp.Web.Controllers
         }
 
         [HttpPost("create")]
-        public IActionResult Create(Employee employee)
+        public IActionResult Create(CreateVM createVM)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || createVM.BotCheck != 4)
                 return View();
 
+            Employee employee = new Employee
+            {
+                Name = createVM.Name,
+                Email = createVM.Email
+            };
             service.Add(employee);
             return RedirectToAction(nameof(Index));
         }

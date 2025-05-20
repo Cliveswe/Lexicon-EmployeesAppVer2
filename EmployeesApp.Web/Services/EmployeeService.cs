@@ -55,7 +55,7 @@ namespace EmployeesApp.Web.Services
 
         internal bool ShowAsHighLighted(string email)
         {
-            string pattern = @"admin";
+            string pattern = @"admin|Admin";
             Match match = Regex.Match(email, pattern);
             if (match.Success)
             {
